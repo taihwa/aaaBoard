@@ -10,12 +10,12 @@ router.post('/', function(req,res) {
 
 });
 
-/*router.('/', function(req,res) {
+router.post('/_id', function(req,res) {
 
 });
 
-router.delete('/', function(req,res) {
+/*router.delete('/', function(req,res) {
 
-});
-*/
+});*/
+
 module.exports = router;
