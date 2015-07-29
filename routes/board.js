@@ -19,11 +19,12 @@ router.get('/write', function(req, res, next) {
 });
 
 router.post('/write', function(req,res) {
+    console.log(req.body);
     console.log('write');
     var js = {
         nr: ''
-        ,subject: 'test'
-        ,content: 'test test'
+        ,subject: req.body.title
+        ,content: req.body.content
         ,regdate: new Date().getTime()
     }
     db.query("INSERT INTO "+tbl+" SET ?",js,function(err,result){
