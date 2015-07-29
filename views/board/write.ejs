@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<form method="post" action="write">
+    <table>
+        <thead>
+        <tr>
+            <td>제목</td>
+            <td>내용</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text" /></td>
+            <td><textarea></textarea></td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="저장" />
+</form>
+
+</body>
+</html>
