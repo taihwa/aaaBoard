@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/write', function(req, res, next) {
-    res.render('board/write', { title: 'write | aaBoard',boardName: boardName });
+    res.render('board/write', { title: 'write | aaBoard',boardName: boardName, row:{subject:'',content:''} });
 });
 
 router.post('/write', function(req,res) {
@@ -80,6 +80,16 @@ router.post('/edit/:_id', function(req,res) {
         res.redirect("/"+boardName);
    });
 });
+
+router.get('/delete/:_id', function(req,res) {
+    console.log(11);
+    var _id= req.params._id;
+    db.query("DELETE FROM "+tbl+" WHERE nr="+_id, function(err,result) {
+        if(err) throw err;
+        console.log("Delete Complete");
+        res.redirect ('/board');
+    });
+})
 
 
 
