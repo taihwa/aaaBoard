@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/write2', function(req, res, next) {
+router.get('/write', function(req, res, next) {
     //res.render('board/list', { title: 'aaBoard' });
 });
 
