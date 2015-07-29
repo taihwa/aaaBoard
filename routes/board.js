@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/write', function(req, res, next) {
+router.get('/write2', function(req, res, next) {
     //res.render('board/list', { title: 'aaBoard' });
 });
 
@@ -28,6 +28,7 @@ router.post('/write', function(req,res) {
         nr: ''
         ,subject: 'test'
         ,content: 'test test'
+        ,regdate: new Date().getTime()
     }
     db.query("INSERT INTO "+tbl+" SET ?",js,function(err,result){
         console.log('write_ok');
