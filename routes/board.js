@@ -5,7 +5,21 @@ var tbl = "testBoard";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('board/list', { title: 'aaBoard' });
+    var js = {
+        title: 'List | aaBoard'
+    };
+
+    db.query("SELECT * FROM ?",tbl,function(err,result){
+        js.rows = result;
+        res.render('board/list', js);
+    });
+
+
+
+});
+
+router.get('/write', function(req, res, next) {
+    //res.render('board/list', { title: 'aaBoard' });
 });
 
 router.post('/write', function(req,res) {
@@ -16,8 +30,7 @@ router.post('/write', function(req,res) {
         ,content: 'test test'
     }
     db.query("INSERT INTO "+tbl+" SET ?",js,function(err,result){
-        console.log('test');
-        res.send('test');
+        console.log('write_ok');
     });
 });
 
