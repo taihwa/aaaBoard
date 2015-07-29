@@ -9,12 +9,19 @@
 <p>Welcome to <%= title %></p>
 <table>
     <thead>
-    <tr>
-        <td>No.</td>
-        <td>제목</td>
-        <td>글쓴이</td>
-        <td>날짜</td>
-    </tr>
+    <%
+    rows.forEach(function(row) {
+        %>
+        <tr>
+            <td>No.</td>
+            <td><%=row.subject%></td>
+            <td><%=row.content%></td>
+            <td><%=row.regdate%></td>
+        </tr>
+        <%
+    });
+    %>
+
     </thead>
     <tbody>
     <tr>
