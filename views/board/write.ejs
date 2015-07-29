@@ -8,7 +8,13 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 <p><a href="/<%=boardName%>/">목록</a></p>
-<form method="post" action="write">
+<% if(row.subject) {
+    var route_name = 'edit/' + row.nr;
+}else{
+    var route_name = 'write';
+}
+%>
+<form method="post" action=<%route_name%> >
     <table>
         <thead>
         <tr>
@@ -18,8 +24,8 @@
         </thead>
         <tbody>
         <tr>
-            <td><input type="text" name="title" /></td>
-            <td><textarea name="content"></textarea></td>
+            <td><input type="text" name="subject" value="<%=row.subject%>" /></td>
+            <td><textarea name="content"><%=row.content%>></textarea></td>
         </tr>
         </tbody>
     </table>

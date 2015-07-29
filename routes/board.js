@@ -29,7 +29,7 @@ router.post('/write', function(req,res) {
     console.log('write');
     var js = {
         nr: ''
-        ,subject: req.body.title
+        ,subject: req.body.subject
         ,regdate: new Date().getTime()
     };
     db.query("INSERT INTO "+tbl+" SET ?",js,function(err,result){
@@ -40,7 +40,6 @@ router.post('/write', function(req,res) {
 
 router.get('/:_id', function(req, res, next) {
     console.log('read');
-
     var _id = req.params._id;
     var js = {
         title: 'Read | aaBoard'
@@ -54,6 +53,32 @@ router.get('/:_id', function(req, res, next) {
         console.log(js);
         res.render('board/read', js);
     });
+});
+
+router.get('/edit/:_id', function(req,res) {
+    var _id = req.params._id;
+    var js = {
+        title: 'Read | aaBoard'
+        ,boardName: boardName
+        ,row: {}
+    };
+    db.query("SELECT * FROM "+tbl+" WHERE nr=?",[_id],function(err,results) {
+        console.log('edit');
+        js.row = results[0];
+        res.render('board/write', js);
+    });
+});
+
+router.post('/edit/:_id', function(req,res) {
+    var _id = req.params._id;
+    var js = {
+        subject: req.body.subject,
+        content: req.body.content
+    };
+   db.query("UPDATE "+tbl+ " SET subject=:subject, content = :content WHERE nr="+ db.escape(_id), js, function(err,result) {
+       if(!err)
+        res.redirect("/"+boardName);
+   });
 });
 
 
