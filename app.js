@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
 });
 
 var server = app.listen(3000, function() {
-    console.log("awaaa");
+    console.log("listen 3000 ok");
 });
 
 // error handlers

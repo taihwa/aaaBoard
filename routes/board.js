@@ -5,12 +5,15 @@ var tbl = "testBoard";
 
 /* GET home page. */
 router.get('/list', function(req, res, next) {
+    console.log('list');
     var js = {
         title: 'List | aaBoard'
         ,rows: []
     };
-    db.query("SELECT * FROM ?",tbl,function(err,result){
-        js.rows.push = result;
+
+    db.query("SELECT * FROM "+tbl,function(err,results){
+        console.log('list_ok');
+        js.rows = results;
         res.render('board/list', js);
     });
 });
