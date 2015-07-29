@@ -8,18 +8,14 @@ router.get('/', function(req, res, next) {
     var js = {
         title: 'List | aaBoard'
     };
-
     db.query("SELECT * FROM ?",tbl,function(err,result){
         js.rows = result;
         res.render('board/list', js);
     });
-
-
-
 });
 
 router.get('/write', function(req, res, next) {
-    //res.render('board/list', { title: 'aaBoard' });
+    res.render('board/write', { title: 'aaBoard' });
 });
 
 router.post('/write', function(req,res) {
