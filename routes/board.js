@@ -1,13 +1,24 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../modules/db').conn();
+var tbl = "testBoard";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('board/list', { title: 'aaBoard' });
 });
 
-router.post('/', function(req,res) {
-
+router.post('/write', function(req,res) {
+    console.log('write');
+    var js = {
+        nr: ''
+        ,subject: 'test'
+        ,content: 'test test'
+    }
+    db.query("INSERT INTO "+tbl+" SET ?",js,function(err,result){
+        console.log('test');
+        res.send('test');
+    });
 });
 
 router.post('/_id', function(req,res) {
