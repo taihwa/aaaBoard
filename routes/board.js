@@ -4,12 +4,13 @@ var db = require('../modules/db').conn();
 var tbl = "testBoard";
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/list', function(req, res, next) {
     var js = {
         title: 'List | aaBoard'
+        ,rows: []
     };
     db.query("SELECT * FROM ?",tbl,function(err,result){
-        js.rows = result;
+        js.rows.push = result;
         res.render('board/list', js);
     });
 });
@@ -26,7 +27,7 @@ router.post('/write', function(req,res) {
         ,subject: req.body.title
         ,content: req.body.content
         ,regdate: new Date().getTime()
-    }
+    };
     db.query("INSERT INTO "+tbl+" SET ?",js,function(err,result){
         console.log('write_ok');
     });
