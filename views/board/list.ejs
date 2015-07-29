@@ -7,12 +7,12 @@
 <body>
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
+<p><a href="/<%=boardName%>/write">글쓰기</a></p>
 <table>
     <thead>
     <tr>
         <td>No.</td>
         <td>제목</td>
-        <td>내용</td>
         <td>날짜</td>
     </tr>
     </thead>
@@ -22,8 +22,7 @@
         %>
         <tr>
             <td><%=row.nr%></td>
-            <td><%=row.subject%></td>
-            <td><%=row.content%></td>
+            <td><a href="/<%=boardName%>/<%=row.nr%>"><%=row.subject%></a></td>
             <td><%=row.regdate%></td>
         </tr>
         <%
